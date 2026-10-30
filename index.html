@@ -2,12 +2,18 @@
 <html lang="ko">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>WEEKLY ORDER PICKS</title>
 
 <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+
 
 <style>
 
@@ -22,21 +28,22 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* =========================
+
+/* ===============================
    HEADER
-========================= */
+================================ */
 
 header {
-    background: #ffffff;
+    background: #fff;
     padding: 28px 3%;
     border-bottom: 1px solid #e5e5e5;
 }
 
 .store-name {
-    margin-bottom: 7px;
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 3px;
+    margin-bottom: 7px;
 }
 
 header h1 {
@@ -49,87 +56,82 @@ header h1 {
 
 .header-text {
     margin-top: 14px;
-    color: #707072;
     font-size: 12px;
+    color: #707072;
 }
 
-/* =========================
+
+/* ===============================
    MAIN
-========================= */
+================================ */
 
 main {
     width: 100%;
     max-width: 1600px;
-    margin: 0 auto;
+    margin: auto;
     padding: 24px 2%;
 }
 
-/* =========================
+
+/* ===============================
    CATEGORY
-========================= */
+================================ */
 
 .category {
-    margin-bottom: 42px;
+    margin-bottom: 44px;
 }
 
 .category-title {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-
     margin-bottom: 12px;
 }
 
 .category-title h2 {
     margin: 0;
-
     font-size: 22px;
     font-weight: 900;
-
     letter-spacing: -1px;
 }
 
 .category-title span {
-    color: #707072;
-
     font-size: 9px;
+    color: #707072;
     letter-spacing: 1px;
 }
 
-/* =========================
-   가로 5개
-========================= */
+
+/* ===============================
+   5 COLUMN GRID
+================================ */
 
 .products {
     display: grid;
-
-    grid-template-columns:
-        repeat(5, minmax(0, 1fr));
-
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 8px;
 }
 
-/* =========================
+
+/* ===============================
    CARD
-========================= */
+================================ */
 
 .card {
     position: relative;
-
     min-width: 0;
-
+    background: #fff;
     overflow: hidden;
-
-    background: #ffffff;
 }
+
+
+/* 순위 */
 
 .rank {
     position: absolute;
-
     top: 10px;
     left: 10px;
-
-    z-index: 5;
+    z-index: 10;
 
     width: 29px;
     height: 29px;
@@ -140,34 +142,29 @@ main {
 
     border-radius: 50%;
 
-    background: #111111;
-    color: #ffffff;
+    background: #111;
+    color: #fff;
 
     font-size: 9px;
     font-weight: 800;
 }
 
-/* =========================
+
+/* ===============================
    PRODUCT IMAGE
-========================= */
+================================ */
 
 .image-area {
-
-    /* 이전보다 크게 */
     height: 180px;
-
-    overflow: hidden;
-
     background: #f1f1f1;
+    overflow: hidden;
 }
 
 .image-link {
-
     width: 100%;
     height: 100%;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -175,8 +172,6 @@ main {
 }
 
 .product-image {
-
-    /* 상품을 거의 꽉 차게 */
     width: 98%;
     height: 98%;
 
@@ -188,233 +183,153 @@ main {
 }
 
 .image-link:hover .product-image {
-
-    transform:
-        scale(1.04);
-
+    transform: scale(1.04);
     opacity: 0.92;
 }
 
 .image-link:active .product-image {
-
-    transform:
-        scale(0.97);
+    transform: scale(0.97);
 }
 
-/* =========================
-   PRODUCT INFO
-========================= */
+
+/* ===============================
+   INFO
+================================ */
 
 .info {
     padding: 10px;
 }
 
 .product-name {
-
-    min-height: 29px;
-
-    margin-bottom: 4px;
+    min-height: 30px;
 
     font-size: 12px;
-
     font-weight: 900;
-
     line-height: 1.15;
 
-    letter-spacing: -0.3px;
+    margin-bottom: 5px;
 }
 
 .style-code {
-
-    margin-bottom: 3px;
-
+    font-size: 9px;
     color: #707072;
 
-    font-size: 9px;
+    margin-bottom: 3px;
 }
 
 .price {
-
     margin-top: 6px;
-
     margin-bottom: 10px;
 
     font-size: 13px;
-
     font-weight: 900;
 }
 
-/* =========================
+
+/* ===============================
    BARCODE
-========================= */
+================================ */
 
 .barcode-area {
-
+    border-top: 1px solid #e5e5e5;
     padding-top: 8px;
-
-    border-top:
-        1px solid #e5e5e5;
 }
 
 .barcode-title {
-
-    margin-bottom: 4px;
-
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1px;
     color: #707072;
 
-    font-size: 7px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
+    margin-bottom: 5px;
 }
 
 .barcode-box {
-
     width: 100%;
-
+    background: #fff;
     overflow: hidden;
-
-    background: #ffffff;
 }
 
 .barcode-box svg {
-
     width: 100%;
-
     height: auto;
-
     display: block;
 }
 
-/* =========================
-   EMPTY CARD
-========================= */
 
-.placeholder-image {
-
-    color: #aaaaaa;
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    text-align: center;
-}
-
-.empty-info {
-
-    margin-top: 8px;
-
-    color: #aaaaaa;
-
-    font-size: 8px;
-}
-
-/* =========================
+/* ===============================
    GALAXY TAB
-
-   5열 유지 +
-   사진 크게
-========================= */
+================================ */
 
 @media (max-width: 1100px) {
 
     main {
-
-        padding:
-            18px
-            8px;
+        padding: 18px 8px;
     }
 
     .products {
-
         grid-template-columns:
-            repeat(
-                5,
-                minmax(0, 1fr)
-            );
+            repeat(5, minmax(0, 1fr));
 
         gap: 6px;
     }
 
-    /* 핵심 변경 */
     .image-area {
-
         height: 150px;
     }
 
     .product-image {
-
         width: 98%;
-
         height: 98%;
     }
 
     .info {
-
         padding: 8px;
     }
 
     .product-name {
-
-        min-height: 25px;
-
         font-size: 10px;
+        min-height: 27px;
     }
 
     .style-code {
-
         font-size: 8px;
     }
 
     .price {
-
         font-size: 11px;
     }
 
-    .barcode-title {
-
-        font-size: 6px;
-    }
 }
 
-/* =========================
+
+/* ===============================
    PHONE
-========================= */
+================================ */
 
 @media (max-width: 600px) {
 
     .products {
-
         grid-template-columns:
-            repeat(
-                2,
-                minmax(0, 1fr)
-            );
+            repeat(2, minmax(0, 1fr));
     }
 
     .image-area {
-
         height: 180px;
     }
+
 }
 
-/* =========================
+
+/* ===============================
    FOOTER
-========================= */
+================================ */
 
 footer {
+    padding: 20px 3% 40px;
 
-    padding:
-        20px
-        3%
-        40px;
-
-    color: #999999;
-
+    color: #999;
     font-size: 8px;
-
     letter-spacing: 2px;
 }
 
@@ -429,24 +344,16 @@ footer {
 <header>
 
 <div class="store-name">
-
 SONGDO · WEEKLY PICKS
-
 </div>
 
-
 <h1>
-
 WEEKLY<br>
 ORDER PICKS
-
 </h1>
 
-
 <div class="header-text">
-
 카테고리별 이번 주 추천 제품
-
 </div>
 
 </header>
@@ -456,91 +363,70 @@ ORDER PICKS
 <main>
 
 
-<!-- =========================
+<!-- ===============================
      FOOTWEAR
-========================= -->
+================================ -->
 
 <section class="category">
 
-
 <div class="category-title">
 
-<h2>
-FOOTWEAR TOP 5
-</h2>
+<h2>FOOTWEAR TOP 5</h2>
 
-<span>
-THIS WEEK
-</span>
+<span>THIS WEEK</span>
 
 </div>
-
 
 <div
-class="products"
-id="footwearProducts">
+    class="products"
+    id="footwearProducts">
 </div>
-
 
 </section>
 
 
 
-<!-- =========================
+<!-- ===============================
      APPAREL
-========================= -->
+================================ -->
 
 <section class="category">
 
-
 <div class="category-title">
 
-<h2>
-APPAREL TOP 5
-</h2>
+<h2>APPAREL TOP 5</h2>
 
-<span>
-THIS WEEK
-</span>
+<span>THIS WEEK</span>
 
 </div>
-
 
 <div
-class="products"
-id="apparelProducts">
+    class="products"
+    id="apparelProducts">
 </div>
-
 
 </section>
 
 
 
-<!-- =========================
+<!-- ===============================
      EQUIPMENT
-========================= -->
+================================ -->
 
 <section class="category">
 
-
 <div class="category-title">
 
-<h2>
-EQUIPMENT TOP 5
-</h2>
+<h2>EQUIPMENT TOP 5</h2>
 
-<span>
-THIS WEEK
-</span>
+<span>THIS WEEK</span>
 
 </div>
-
 
 <div
-class="products"
-id="equipmentProducts">
+    class="products"
+    id="equipmentProducts">
 </div>
-
 
 </section>
 
@@ -550,454 +436,371 @@ id="equipmentProducts">
 
 
 <footer>
-
 SONGDO · WEEKLY ORDER PICKS
-
 </footer>
 
 
 
 <script>
 
-/* ======================================
-   FOOTWEAR DATA
-====================================== */
+
+/* =====================================================
+   FOOTWEAR
+===================================================== */
 
 const footwearProducts = [
 
-
 {
-    rank: "01",
-
     name: "AIR FORCE 1 '07",
-
     styleCode: "CW2288-111",
-
     price: "₩149,000",
+    barcode: "194500874909",
+    image: "./images/CW2288-111.png",
 
-    image:
-    "./images/CW2288-111.png",
-
-    link:
-    "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%97%90%EC%96%B4-%ED%8F%AC%EC%8A%A4-1-07-%EB%82%A8%EC%84%B1-%EC%8B%A0%EB%B0%9C-qdjlTENZ/CW2288-111",
-
-    upc:
-    "194500874909"
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%97%90%EC%96%B4-%ED%8F%AC%EC%8A%A4-1-07-%EB%82%A8%EC%84%B1-%EC%8B%A0%EB%B0%9C-qdjlTENZ/CW2288-111"
 },
 
-
 {
-    rank: "02",
+    name: "AIR FORCE 1 '07 WB",
+    styleCode: "CJ9179-200",
+    price: "₩169,000",
+    barcode: "193152246874",
+    image: "./images/CJ9179-200.png",
 
-    name:
-    "AIR FORCE 1 '07 WB",
-
-    styleCode:
-    "CJ9179-200",
-
-    price:
-    "₩169,000",
-
-    image:
-    "./images/CJ9179-200.png",
-
-    link:
-    "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%97%90%EC%96%B4-%ED%8F%AC%EC%8A%A4-1-07-wb-%EB%82%A8%EC%84%B1-%EC%8B%A0%EB%B0%9C-8GsD4QyI/CJ9179-200",
-
-    upc:
-    "193152246874"
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%97%90%EC%96%B4-%ED%8F%AC%EC%8A%A4-1-07-wb-%EB%82%A8%EC%84%B1-%EC%8B%A0%EB%B0%9C-8GsD4QyI/CJ9179-200"
 },
 
-
 {
-    rank: "03",
+    name: "AIR FORCE 1 '07",
+    styleCode: "FQ8901-259",
+    price: "₩169,000",
+    barcode: "196969790400",
+    image: "./images/FQ8901-259.png",
 
-    name:
-    "AIR FORCE 1 '07",
-
-    styleCode:
-    "FQ8901-259",
-
-    price:
-    "₩169,000",
-
-    image:
-    "./images/FQ8901-259.png",
-
-    link:
-    "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%97%90%EC%96%B4-%ED%8F%AC%EC%8A%A4-1-07-%EC%97%AC%EC%84%B1-%EC%8B%A0%EB%B0%9C-oC22E7Fz/FQ8901-259",
-
-    upc:
-    "196969790400"
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%97%90%EC%96%B4-%ED%8F%AC%EC%8A%A4-1-07-%EC%97%AC%EC%84%B1-%EC%8B%A0%EB%B0%9C-oC22E7Fz/FQ8901-259"
 },
 
-
 {
-    rank: "04",
+    name: "NIKE BURROW SE",
+    styleCode: "HV8561-002",
+    price: "₩79,000",
+    barcode: "198486699280",
+    image: "./images/HV8561-002.png",
 
-    name:
-    "NIKE BURROW SE",
-
-    styleCode:
-    "HV8561-002",
-
-    price:
-    "₩79,000",
-
-    image:
-    "./images/HV8561-002.png",
-
-    link:
-    "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EB%B2%84%EB%A1%9C%EC%9A%B0-se-%EB%82%A8%EC%84%B1-%EC%8A%AC%EB%A6%AC%ED%8D%BC-YVctXDOl/HV8561-002",
-
-    upc:
-    "198486699280"
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EB%B2%84%EB%A1%9C%EC%9A%B0-se-%EB%82%A8%EC%84%B1-%EC%8A%AC%EB%A6%AC%ED%8D%BC-YVctXDOl/HV8561-002"
 },
 
-
 {
-    rank: "05",
+    name: "W NIKE BURROW SE",
+    styleCode: "DR8882-100",
+    price: "₩79,000",
+    barcode: "196151990410",
+    image: "./images/DR8882-100.png",
 
-    name:
-    "W NIKE BURROW SE",
-
-    styleCode:
-    "DR8882-100",
-
-    price:
-    "₩79,000",
-
-    image:
-    "./images/DR8882-100.png",
-
-    link:
-    "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EB%B2%84%EB%A1%9C%EC%9A%B0-se-%EC%97%AC%EC%84%B1-%EC%8A%AC%EB%A6%AC%ED%8D%BC-H9vZoFik/DR8882-100",
-
-    upc:
-    "196151990410"
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EB%B2%84%EB%A1%9C%EC%9A%B0-se-%EC%97%AC%EC%84%B1-%EC%8A%AC%EB%A6%AC%ED%8D%BC-H9vZoFik/DR8882-100"
 }
-
 
 ];
 
 
 
-/* ======================================
-   FOOTWEAR CARD 생성
-====================================== */
-
-function createFootwearCards() {
-
-
-const container =
-
-document.getElementById(
-"footwearProducts"
-);
-
-
-footwearProducts.forEach(
-(product, index) => {
-
-
-const barcodeId =
-
-`barcode${index + 1}`;
-
-
-const card =
-
-document.createElement(
-"article"
-);
-
-
-card.className =
-"card";
-
-
-card.innerHTML = `
-
-
-<div class="rank">
-
-${product.rank}
-
-</div>
-
-
-<div class="image-area">
-
-
-<a
-
-class="image-link"
-
-href="${product.link}"
-
-target="_blank"
-
-rel="noopener noreferrer"
-
-aria-label="${product.name} 제품 페이지 열기"
-
->
-
-
-<img
-
-src="${product.image}"
-
-class="product-image"
-
-alt="${product.name}"
-
->
-
-
-</a>
-
-
-</div>
-
-
-
-<div class="info">
-
-
-<div class="product-name">
-
-${product.name}
-
-</div>
-
-
-<div class="style-code">
-
-${product.styleCode}
-
-</div>
-
-
-<div class="price">
-
-${product.price}
-
-</div>
-
-
-
-<div class="barcode-area">
-
-
-<div class="barcode-title">
-
-SCAN TO ORDER
-
-</div>
-
-
-<div class="barcode-box">
-
-<svg id="${barcodeId}"></svg>
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-`;
-
-
-container.appendChild(
-card
-);
-
-
-
-/* UPC 바코드 */
-
-JsBarcode(
-
-`#${barcodeId}`,
-
-product.upc,
+/* =====================================================
+   APPAREL
+===================================================== */
+
+const apparelProducts = [
 
 {
+    name: "AS M ACG TFADV WNDPF CNWL GLCR",
+    styleCode: "FV8654-010",
+    price: "₩209,000",
+    barcode: "197597292502",
+    image: "./images/FV8654-010.png",
 
-format: "UPC",
+    link: "https://www.nike.com/kr/t/acg-%EC%BA%94%EC%9B%B0-%EA%B8%80%EB%A0%88%EC%9D%B4%EC%85%94-%EB%82%A8%EC%84%B1-%EC%8D%A8%EB%A7%88-%ED%95%8F-adv-%EC%9C%88%EB%93%9C%ED%94%84%EB%A3%A8%ED%94%84-%EC%9E%AC%ED%82%B7-R4wglt1w"
+},
 
-width: 2,
+{
+    name: "AS M NK WR LTWT FL MCRO CHNL J",
+    styleCode: "JA0742-010",
+    price: "₩219,000",
+    barcode: "199778196012",
+    image: "./images/JA0742-010.png",
 
-height: 52,
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%9C%88%EB%93%9C%EB%9F%AC%EB%84%88-%EB%82%A8%EC%84%B1-%EA%B2%BD%EB%9F%89-%EB%8B%A4%EC%9A%B4-%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%B1%84%EB%84%90-%EC%9E%AC%ED%82%B7-IQNwbAas/JA0742-010"
+},
 
-displayValue: true,
+{
+    name: "AS W NK TF DWN WPFR WRM VEST",
+    styleCode: "IF5888-010",
+    price: "₩185,000",
+    barcode: "198959185265",
+    image: "./images/IF5888-010.png",
 
-fontSize: 10,
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%8A%A4%ED%8F%AC%EC%B8%A0%EC%9B%A8%EC%96%B4-%EC%9C%88%EB%93%9C%ED%91%B8%ED%8D%BC-%EC%97%AC%EC%84%B1-%EC%8D%A8%EB%A7%88-%ED%95%8F-%EB%8B%A4%EC%9A%B4-%EB%B2%A0%EC%8A%A4%ED%8A%B8-e4TsGULg/IF5888-010"
+},
 
-textMargin: 3,
+{
+    name: "AS M NP DF TIGHT TOP SS",
+    styleCode: "FB7933-010",
+    price: "₩39,000",
+    barcode: "196608740575",
+    image: "./images/FB7933-010.png",
 
-margin: 3,
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%ED%94%84%EB%A1%9C-%EB%82%A8%EC%84%B1-%EB%93%9C%EB%9D%BC%EC%9D%B4-%ED%95%8F-%ED%83%80%EC%9D%B4%ED%8A%B8-%EB%B0%98%ED%8C%94-%ED%94%BC%ED%8A%B8%EB%8B%88%EC%8A%A4-%ED%83%91-VPDpDzNa/FB7933-010"
+},
 
-background:
-"#ffffff",
+{
+    name: "M J DF SPRT SS COMP TOP",
+    styleCode: "HV4099-010",
+    price: "₩45,000",
+    barcode: "198485051966",
+    image: "./images/HV4099-010.png",
 
-lineColor:
-"#000000"
-
+    link: "https://www.nike.com/kr/t/%EC%A1%B0%EB%8D%98-%EC%8A%A4%ED%8F%AC%EC%B8%A0-%EB%82%A8%EC%84%B1-%EB%93%9C%EB%9D%BC%EC%9D%B4-%ED%95%8F-%EB%B0%98%ED%8C%94-%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EB%A0%88%EC%9D%B4%EC%96%B4-%ED%83%91-EHpV7ChQ/HV4099-010"
 }
 
-);
+];
 
 
+
+/* =====================================================
+   EQUIPMENT
+===================================================== */
+
+const equipmentProducts = [
+
+{
+    name: "NK DF ACDMY NECKWARMER",
+    styleCode: "HF0787-013",
+    price: "₩25,000",
+    barcode: "198965399069",
+    image: "./images/HF0787-013.png",
+
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%95%84%EC%B9%B4%EB%8D%B0%EB%AF%B8-%EB%93%9C%EB%9D%BC%EC%9D%B4-%ED%95%8F-%EC%B6%95%EA%B5%AC-%EB%84%A5-%EC%9B%8C%EB%A8%B8-aCyVzSfo/HF0787-013"
+},
+
+{
+    name: "NK BRSLA S DUFF - X",
+    styleCode: "IB4394-010",
+    price: "₩55,000",
+    barcode: "198728892738",
+    image: "./images/IB4394-010.png",
+
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EB%B8%8C%EB%9D%BC%EC%A7%88%EB%A6%AC%EC%95%84-%ED%8A%B8%EB%A0%88%EC%9D%B4%EB%8B%9D-%EB%8D%94%ED%94%8C%EB%B0%B1%EC%8A%A4%EB%AA%B0-40l-ie1SAM5f/IB4394-010"
+},
+
+{
+    name: "NK NSW RPM BKPK 2.0",
+    styleCode: "FD7544-010",
+    price: "₩129,000",
+    barcode: "196968860326",
+    image: "./images/FD7544-010.png",
+
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%8A%A4%ED%8F%AC%EC%B8%A0%EC%9B%A8%EC%96%B4-rpm-%EB%B0%B1%ED%8C%A926l-6o329SHZ/FD7544-010"
+},
+
+{
+    name: "NIKE SLIM WAISTPACK 4.0",
+    styleCode: "II5121-082",
+    price: "₩39,000",
+    barcode: "198485554634",
+    image: "./images/II5121-082.png",
+
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%8A%AC%EB%A6%BC-%EB%9F%AC%EB%8B%9D-%EC%9B%A8%EC%9D%B4%EC%8A%A4%ED%8A%B8-%ED%8C%A9-4-3p8oFBgs/II5121-082"
+},
+
+{
+    name: "NK HERITAGE S WAISTPACK 2.0",
+    styleCode: "IB4376-627",
+    price: "₩35,000",
+    barcode: "198728886805",
+    image: "./images/IB4376-627.png",
+
+    link: "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%ED%97%A4%EB%A6%AC%ED%8B%B0%EC%A7%80-2-%EC%9B%A8%EC%9D%B4%EC%8A%A4%ED%8A%B8-%ED%8C%A91l-bez3ZzvP/IB4376-627"
 }
 
-);
-
-
-}
+];
 
 
 
-/* ======================================
-   APPAREL / EQUIPMENT
-   빈카드 생성
-====================================== */
+/* =====================================================
+   카드 생성
+===================================================== */
 
-function createEmptyCards(
-containerId
+function createProductCards(
+    containerId,
+    category,
+    products
 ) {
 
-
-const container =
-
-document.getElementById(
-containerId
-);
+    const container =
+        document.getElementById(
+            containerId
+        );
 
 
-for (
-let i = 1;
-i <= 5;
-i++
-) {
+    products.forEach(
+        (product, index) => {
 
 
-const rank =
-
-String(i)
-.padStart(
-2,
-"0"
-);
-
-
-const card =
-
-document.createElement(
-"article"
-);
+        const rank =
+            String(index + 1)
+            .padStart(
+                2,
+                "0"
+            );
 
 
-card.className =
-"card";
+        const barcodeId =
+            `${category}Barcode${index + 1}`;
 
 
-card.innerHTML = `
+        const card =
+            document.createElement(
+                "article"
+            );
 
 
-<div class="rank">
-
-${rank}
-
-</div>
+        card.className =
+            "card";
 
 
-<div class="image-area">
+        card.innerHTML = `
+
+            <div class="rank">
+                ${rank}
+            </div>
 
 
-<div class="image-link">
+            <div class="image-area">
+
+                <a
+                    class="image-link"
+                    href="${product.link}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="${product.name} 제품 페이지 열기"
+                >
+
+                    <img
+                        src="${product.image}"
+                        class="product-image"
+                        alt="${product.name}"
+                    >
+
+                </a>
+
+            </div>
 
 
-<div class="placeholder-image">
+            <div class="info">
 
-PRODUCT IMAGE
+                <div class="product-name">
+                    ${product.name}
+                </div>
 
-</div>
+                <div class="style-code">
+                    ${product.styleCode}
+                </div>
 
-
-</div>
-
-
-</div>
-
-
-
-<div class="info">
+                <div class="price">
+                    ${product.price}
+                </div>
 
 
-<div class="product-name">
+                <div class="barcode-area">
 
-PRODUCT NAME
+                    <div class="barcode-title">
+                        SCAN TO ORDER
+                    </div>
 
-</div>
+                    <div class="barcode-box">
 
+                        <svg
+                            id="${barcodeId}"
+                        ></svg>
 
-<div class="style-code">
+                    </div>
 
-STYLE CODE
+                </div>
 
-</div>
+            </div>
 
-
-<div class="price">
-
-₩0
-
-</div>
-
-
-<div class="empty-info">
-
-제품 정보 입력 예정
-
-</div>
+        `;
 
 
-</div>
+        container.appendChild(
+            card
+        );
 
 
-`;
+        /* =============================
+           CW2288-111과 동일한
+           UPC-A 렌더링 스타일
+        ============================== */
+
+        JsBarcode(
+
+            `#${barcodeId}`,
+
+            product.barcode,
+
+            {
+
+                format: "UPC",
+
+                width: 2,
+
+                height: 52,
+
+                displayValue: true,
+
+                fontSize: 10,
+
+                textMargin: 3,
+
+                margin: 3,
+
+                background:
+                    "#ffffff",
+
+                lineColor:
+                    "#000000"
+
+            }
+
+        );
 
 
-container.appendChild(
-card
-);
-
+    });
 
 }
 
 
-}
 
+/* =====================================================
+   페이지 생성
+===================================================== */
 
-
-/* 페이지 생성 */
-
-createFootwearCards();
-
-
-createEmptyCards(
-"apparelProducts"
+createProductCards(
+    "footwearProducts",
+    "fw",
+    footwearProducts
 );
 
 
-createEmptyCards(
-"equipmentProducts"
+createProductCards(
+    "apparelProducts",
+    "ap",
+    apparelProducts
+);
+
+
+createProductCards(
+    "equipmentProducts",
+    "eq",
+    equipmentProducts
 );
 
 
