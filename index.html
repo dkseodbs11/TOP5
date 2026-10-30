@@ -2,524 +2,425 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WEEKLY ORDER PICKS</title>
+
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f5f5f5;
+    color: #111;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+/* =========================
+   HEADER
+========================= */
 
-    <title>WEEKLY ORDER PICKS</title>
+header {
+    background: #ffffff;
+    padding: 28px 3%;
+    border-bottom: 1px solid #e5e5e5;
+}
 
-    <!-- 바코드 생성 -->
-    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+.store-name {
+    margin-bottom: 7px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
 
+header h1 {
+    margin: 0;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 0.9;
+    letter-spacing: -3px;
+    font-weight: 900;
+}
 
-    <style>
+.header-text {
+    margin-top: 14px;
+    color: #707072;
+    font-size: 12px;
+}
 
-        * {
-            box-sizing: border-box;
-        }
+/* =========================
+   MAIN
+========================= */
 
+main {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 24px 2%;
+}
 
-        body {
-            margin: 0;
-            background: #f5f5f5;
-            color: #111;
+/* =========================
+   CATEGORY
+========================= */
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-        }
+.category {
+    margin-bottom: 42px;
+}
 
+.category-title {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
 
-        /* =============================
-           HEADER
-        ============================= */
+    margin-bottom: 12px;
+}
 
-        header {
-            background: #ffffff;
+.category-title h2 {
+    margin: 0;
 
-            padding:
-                30px
-                3%;
+    font-size: 22px;
+    font-weight: 900;
 
-            border-bottom:
-                1px solid #e5e5e5;
-        }
+    letter-spacing: -1px;
+}
 
+.category-title span {
+    color: #707072;
 
-        .store-name {
-            font-size: 11px;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
 
-            font-weight: 800;
+/* =========================
+   가로 5개
+========================= */
 
-            letter-spacing: 3px;
+.products {
+    display: grid;
 
-            margin-bottom: 8px;
-        }
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
 
+    gap: 8px;
+}
 
-        header h1 {
-            margin: 0;
+/* =========================
+   CARD
+========================= */
 
-            font-size:
-                clamp(
-                    34px,
-                    5vw,
-                    58px
-                );
+.card {
+    position: relative;
 
-            line-height: 0.92;
+    min-width: 0;
 
-            letter-spacing: -3px;
+    overflow: hidden;
 
-            font-weight: 900;
-        }
+    background: #ffffff;
+}
 
+.rank {
+    position: absolute;
 
-        .header-text {
-            margin-top: 15px;
+    top: 10px;
+    left: 10px;
 
-            font-size: 13px;
+    z-index: 5;
 
-            color: #707072;
-        }
+    width: 29px;
+    height: 29px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    border-radius: 50%;
 
-        /* =============================
-           MAIN
-        ============================= */
+    background: #111111;
+    color: #ffffff;
 
-        main {
-            max-width: 1600px;
+    font-size: 9px;
+    font-weight: 800;
+}
 
-            margin: auto;
+/* =========================
+   PRODUCT IMAGE
+========================= */
 
-            padding:
-                25px
-                2%;
-        }
+.image-area {
 
+    /* 이전보다 크게 */
+    height: 180px;
 
+    overflow: hidden;
 
-        /* =============================
-           CATEGORY
-        ============================= */
+    background: #f1f1f1;
+}
 
-        .category {
-            margin-bottom: 40px;
-        }
+.image-link {
 
+    width: 100%;
+    height: 100%;
 
-        .category-title {
-            display: flex;
+    display: flex;
 
-            justify-content:
-                space-between;
+    align-items: center;
+    justify-content: center;
 
-            align-items:
-                flex-end;
+    text-decoration: none;
+}
 
-            margin-bottom:
-                12px;
-        }
+.product-image {
 
+    /* 상품을 거의 꽉 차게 */
+    width: 98%;
+    height: 98%;
 
-        .category-title h2 {
-            margin: 0;
+    object-fit: contain;
 
-            font-size: 23px;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
 
-            font-weight: 900;
+.image-link:hover .product-image {
 
-            letter-spacing: -1px;
-        }
+    transform:
+        scale(1.04);
 
+    opacity: 0.92;
+}
 
-        .category-title span {
-            font-size: 10px;
+.image-link:active .product-image {
 
-            color: #707072;
+    transform:
+        scale(0.97);
+}
 
-            letter-spacing: 1px;
-        }
+/* =========================
+   PRODUCT INFO
+========================= */
 
+.info {
+    padding: 10px;
+}
 
+.product-name {
 
-        /* =============================
-           5 PRODUCT GRID
-        ============================= */
+    min-height: 29px;
 
-        .products {
-            display: grid;
+    margin-bottom: 4px;
 
-            grid-template-columns:
-                repeat(5, minmax(0, 1fr));
+    font-size: 12px;
 
-            gap: 8px;
-        }
+    font-weight: 900;
 
+    line-height: 1.15;
 
+    letter-spacing: -0.3px;
+}
 
-        /* =============================
-           CARD
-        ============================= */
+.style-code {
 
-        .card {
-            position: relative;
+    margin-bottom: 3px;
 
-            background: #ffffff;
+    color: #707072;
 
-            overflow: hidden;
+    font-size: 9px;
+}
 
-            min-width: 0;
-        }
+.price {
 
+    margin-top: 6px;
 
+    margin-bottom: 10px;
 
-        /* 순위 */
+    font-size: 13px;
 
-        .rank {
-            position: absolute;
+    font-weight: 900;
+}
 
-            top: 8px;
+/* =========================
+   BARCODE
+========================= */
 
-            left: 8px;
+.barcode-area {
 
-            z-index: 5;
+    padding-top: 8px;
 
-            width: 29px;
+    border-top:
+        1px solid #e5e5e5;
+}
 
-            height: 29px;
+.barcode-title {
 
-            border-radius: 50%;
+    margin-bottom: 4px;
 
-            background: #111;
+    color: #707072;
 
-            color: #fff;
+    font-size: 7px;
 
-            display: flex;
+    font-weight: 800;
 
-            align-items: center;
+    letter-spacing: 1px;
+}
 
-            justify-content: center;
+.barcode-box {
 
-            font-size: 9px;
+    width: 100%;
 
-            font-weight: 800;
-        }
+    overflow: hidden;
 
+    background: #ffffff;
+}
 
+.barcode-box svg {
 
-        /* =============================
-           PRODUCT IMAGE
-        ============================= */
+    width: 100%;
 
-        .image-area {
-            height: 125px;
+    height: auto;
 
-            background: #f1f1f1;
+    display: block;
+}
 
-            display: flex;
+/* =========================
+   EMPTY CARD
+========================= */
 
-            align-items: center;
+.placeholder-image {
 
-            justify-content: center;
+    color: #aaaaaa;
 
-            overflow: hidden;
-        }
+    font-size: 9px;
 
+    font-weight: 800;
 
-        .image-link {
-            width: 100%;
+    text-align: center;
+}
 
-            height: 100%;
+.empty-info {
 
-            display: flex;
+    margin-top: 8px;
 
-            justify-content: center;
+    color: #aaaaaa;
 
-            align-items: center;
+    font-size: 8px;
+}
 
-            text-decoration: none;
-        }
+/* =========================
+   GALAXY TAB
 
+   5열 유지 +
+   사진 크게
+========================= */
 
-        .product-image {
-            width: 90%;
+@media (max-width: 1100px) {
 
-            height: 90%;
+    main {
 
-            object-fit: contain;
+        padding:
+            18px
+            8px;
+    }
 
-            transition:
-                transform
-                0.2s ease;
-        }
+    .products {
 
+        grid-template-columns:
+            repeat(
+                5,
+                minmax(0, 1fr)
+            );
 
-        .image-link:hover
-        .product-image {
-            transform:
-                scale(1.05);
-        }
+        gap: 6px;
+    }
 
+    /* 핵심 변경 */
+    .image-area {
 
-        .placeholder-image {
-            color: #aaa;
+        height: 150px;
+    }
 
-            font-size: 10px;
+    .product-image {
 
-            font-weight: 800;
+        width: 98%;
 
-            text-align: center;
+        height: 98%;
+    }
 
-            letter-spacing: 0.5px;
-        }
+    .info {
 
+        padding: 8px;
+    }
 
+    .product-name {
 
-        /* =============================
-           INFO
-        ============================= */
+        min-height: 25px;
 
-        .info {
-            padding: 10px;
-        }
+        font-size: 10px;
+    }
 
+    .style-code {
 
-        .product-name {
-            font-size: 13px;
+        font-size: 8px;
+    }
 
-            font-weight: 900;
+    .price {
 
-            line-height: 1.15;
+        font-size: 11px;
+    }
 
-            min-height: 30px;
+    .barcode-title {
 
-            margin-bottom: 4px;
+        font-size: 6px;
+    }
+}
 
-            letter-spacing: -0.3px;
-        }
+/* =========================
+   PHONE
+========================= */
 
+@media (max-width: 600px) {
 
-        .style-code {
-            font-size: 9px;
+    .products {
 
-            color: #707072;
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
 
-            margin-bottom: 3px;
-        }
+    .image-area {
 
+        height: 180px;
+    }
+}
 
-        .size {
-            font-size: 9px;
+/* =========================
+   FOOTER
+========================= */
 
-            color: #707072;
+footer {
 
-            margin-bottom: 3px;
-        }
+    padding:
+        20px
+        3%
+        40px;
 
+    color: #999999;
 
-        .price {
-            margin-top: 6px;
+    font-size: 8px;
 
-            margin-bottom: 10px;
+    letter-spacing: 2px;
+}
 
-            font-size: 13px;
-
-            font-weight: 900;
-        }
-
-
-
-        /* =============================
-           BARCODE
-        ============================= */
-
-        .barcode-area {
-            padding-top: 8px;
-
-            border-top:
-                1px solid #e5e5e5;
-        }
-
-
-        .barcode-title {
-            font-size: 7px;
-
-            font-weight: 800;
-
-            letter-spacing: 1px;
-
-            color: #707072;
-
-            margin-bottom: 4px;
-        }
-
-
-        .barcode-box {
-            width: 100%;
-
-            min-height: 65px;
-
-            background: white;
-
-            overflow: hidden;
-        }
-
-
-        .barcode-box svg {
-            width: 100%;
-
-            height: auto;
-
-            display: block;
-        }
-
-
-        .barcode-number {
-            font-size: 8px;
-
-            text-align: center;
-
-            color: #333;
-
-            margin-top: 2px;
-        }
-
-
-
-        /* =============================
-           EMPTY
-        ============================= */
-
-        .empty-info {
-            font-size: 9px;
-
-            color: #aaa;
-
-            margin-top: 8px;
-        }
-
-
-
-        /* =============================
-           TABLET
-           갤럭시탭에서도 5개 유지
-        ============================= */
-
-        @media
-        (max-width: 1100px) {
-
-            main {
-                padding:
-                    20px
-                    10px;
-            }
-
-
-            .products {
-                grid-template-columns:
-                    repeat(
-                        5,
-                        minmax(0, 1fr)
-                    );
-
-                gap: 6px;
-            }
-
-
-            .image-area {
-                height: 105px;
-            }
-
-
-            .info {
-                padding: 8px;
-            }
-
-
-            .product-name {
-                font-size: 11px;
-
-                min-height: 26px;
-            }
-
-
-            .style-code,
-            .size {
-                font-size: 8px;
-            }
-
-
-            .price {
-                font-size: 11px;
-            }
-
-
-            .rank {
-                width: 25px;
-
-                height: 25px;
-
-                font-size: 8px;
-            }
-
-        }
-
-
-
-        /* =============================
-           MOBILE
-
-           휴대폰에서는 2개
-        ============================= */
-
-        @media
-        (max-width: 600px) {
-
-            .products {
-                grid-template-columns:
-                    repeat(
-                        2,
-                        minmax(0, 1fr)
-                    );
-            }
-
-
-            .image-area {
-                height: 140px;
-            }
-
-        }
-
-
-
-        /* =============================
-           FOOTER
-        ============================= */
-
-        footer {
-            padding:
-                20px
-                3%
-                40px;
-
-            font-size: 9px;
-
-            color: #999;
-
-            letter-spacing: 2px;
-        }
-
-    </style>
+</style>
 
 </head>
-
 
 
 <body>
@@ -527,20 +428,26 @@
 
 <header>
 
-    <div class="store-name">
-        SONGDO · WEEKLY PICKS
-    </div>
+<div class="store-name">
+
+SONGDO · WEEKLY PICKS
+
+</div>
 
 
-    <h1>
-        WEEKLY<br>
-        ORDER PICKS
-    </h1>
+<h1>
+
+WEEKLY<br>
+ORDER PICKS
+
+</h1>
 
 
-    <div class="header-text">
-        카테고리별 이번 주 추천 제품
-    </div>
+<div class="header-text">
+
+카테고리별 이번 주 추천 제품
+
+</div>
 
 </header>
 
@@ -549,345 +456,93 @@
 <main>
 
 
-    <!-- ==================================
-         FOOTWEAR
-    =================================== -->
+<!-- =========================
+     FOOTWEAR
+========================= -->
 
-    <section class="category">
+<section class="category">
 
 
-        <div class="category-title">
+<div class="category-title">
 
-            <h2>
-                FOOTWEAR TOP 5
-            </h2>
+<h2>
+FOOTWEAR TOP 5
+</h2>
 
-            <span>
-                THIS WEEK
-            </span>
+<span>
+THIS WEEK
+</span>
 
-        </div>
+</div>
 
 
-        <div class="products">
+<div
+class="products"
+id="footwearProducts">
+</div>
 
 
-            <!-- ===========================
-                 FOOTWEAR 01
-            ============================ -->
+</section>
 
-            <article class="card">
 
 
-                <div class="rank">
-                    01
-                </div>
+<!-- =========================
+     APPAREL
+========================= -->
 
+<section class="category">
 
-                <div class="image-area">
 
+<div class="category-title">
 
-                    <a
-                        class="image-link"
+<h2>
+APPAREL TOP 5
+</h2>
 
-                        href="https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%97%90%EC%96%B4-%ED%8F%AC%EC%8A%A4-1-07-%EB%82%A8%EC%84%B1-%EC%8B%A0%EB%B0%9C-qdjlTENZ/CW2288-111"
+<span>
+THIS WEEK
+</span>
 
-                        target="_blank"
+</div>
 
-                        rel="noopener noreferrer"
-                    >
 
+<div
+class="products"
+id="apparelProducts">
+</div>
 
-                        <img
-                            src="./images/airforce1.png.png"
 
-                            class="product-image"
+</section>
 
-                            alt="AIR FORCE 1 '07"
-                        >
 
 
-                    </a>
+<!-- =========================
+     EQUIPMENT
+========================= -->
 
+<section class="category">
 
-                </div>
 
+<div class="category-title">
 
+<h2>
+EQUIPMENT TOP 5
+</h2>
 
-                <div class="info">
+<span>
+THIS WEEK
+</span>
 
+</div>
 
-                    <div class="product-name">
-                        AIR FORCE 1 '07
-                    </div>
 
+<div
+class="products"
+id="equipmentProducts">
+</div>
 
-                    <div class="style-code">
-                        CW2288-111
-                    </div>
 
-
-                    <div class="size">
-                        SIZE 8.5
-                    </div>
-
-
-                    <div class="price">
-                        ₩149,000
-                    </div>
-
-
-
-                    <div class="barcode-area">
-
-
-                        <div class="barcode-title">
-                            SCAN TO ORDER
-                        </div>
-
-
-                        <div class="barcode-box">
-
-                            <svg id="barcode1"></svg>
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </article>
-
-
-
-            <!-- FOOTWEAR 02 -->
-
-            <article class="card">
-
-                <div class="rank">
-                    02
-                </div>
-
-                <div class="image-area">
-
-                    <div class="placeholder-image">
-                        PRODUCT IMAGE
-                    </div>
-
-                </div>
-
-                <div class="info">
-
-                    <div class="product-name">
-                        PRODUCT NAME
-                    </div>
-
-                    <div class="style-code">
-                        STYLE CODE
-                    </div>
-
-                    <div class="price">
-                        ₩0
-                    </div>
-
-                    <div class="empty-info">
-                        제품 정보 입력 예정
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- FOOTWEAR 03 -->
-
-            <article class="card">
-
-                <div class="rank">
-                    03
-                </div>
-
-                <div class="image-area">
-
-                    <div class="placeholder-image">
-                        PRODUCT IMAGE
-                    </div>
-
-                </div>
-
-                <div class="info">
-
-                    <div class="product-name">
-                        PRODUCT NAME
-                    </div>
-
-                    <div class="style-code">
-                        STYLE CODE
-                    </div>
-
-                    <div class="price">
-                        ₩0
-                    </div>
-
-                    <div class="empty-info">
-                        제품 정보 입력 예정
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- FOOTWEAR 04 -->
-
-            <article class="card">
-
-                <div class="rank">
-                    04
-                </div>
-
-                <div class="image-area">
-
-                    <div class="placeholder-image">
-                        PRODUCT IMAGE
-                    </div>
-
-                </div>
-
-                <div class="info">
-
-                    <div class="product-name">
-                        PRODUCT NAME
-                    </div>
-
-                    <div class="style-code">
-                        STYLE CODE
-                    </div>
-
-                    <div class="price">
-                        ₩0
-                    </div>
-
-                    <div class="empty-info">
-                        제품 정보 입력 예정
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- FOOTWEAR 05 -->
-
-            <article class="card">
-
-                <div class="rank">
-                    05
-                </div>
-
-                <div class="image-area">
-
-                    <div class="placeholder-image">
-                        PRODUCT IMAGE
-                    </div>
-
-                </div>
-
-                <div class="info">
-
-                    <div class="product-name">
-                        PRODUCT NAME
-                    </div>
-
-                    <div class="style-code">
-                        STYLE CODE
-                    </div>
-
-                    <div class="price">
-                        ₩0
-                    </div>
-
-                    <div class="empty-info">
-                        제품 정보 입력 예정
-                    </div>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-
-    </section>
-
-
-
-
-    <!-- ==================================
-         APPAREL
-    =================================== -->
-
-    <section class="category">
-
-
-        <div class="category-title">
-
-            <h2>
-                APPAREL TOP 5
-            </h2>
-
-            <span>
-                THIS WEEK
-            </span>
-
-        </div>
-
-
-        <div
-            class="products"
-            id="apparelProducts">
-        </div>
-
-
-    </section>
-
-
-
-
-    <!-- ==================================
-         EQUIPMENT
-    =================================== -->
-
-    <section class="category">
-
-
-        <div class="category-title">
-
-            <h2>
-                EQUIPMENT TOP 5
-            </h2>
-
-            <span>
-                THIS WEEK
-            </span>
-
-        </div>
-
-
-        <div
-            class="products"
-            id="equipmentProducts">
-        </div>
-
-
-    </section>
+</section>
 
 
 </main>
@@ -896,7 +551,7 @@
 
 <footer>
 
-    SONGDO · WEEKLY ORDER PICKS
+SONGDO · WEEKLY ORDER PICKS
 
 </footer>
 
@@ -904,152 +559,449 @@
 
 <script>
 
+/* ======================================
+   FOOTWEAR DATA
+====================================== */
 
-    /* =================================
-       AIR FORCE BARCODE
-    ================================== */
+const footwearProducts = [
 
-    JsBarcode(
 
-        "#barcode1",
+{
+    rank: "01",
 
-        "194500874909",
+    name: "AIR FORCE 1 '07",
 
-        {
+    styleCode: "CW2288-111",
 
-            format: "UPC",
+    price: "₩149,000",
 
-            width: 2,
+    image:
+    "./images/CW2288-111.png",
 
-            height: 55,
+    link:
+    "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%97%90%EC%96%B4-%ED%8F%AC%EC%8A%A4-1-07-%EB%82%A8%EC%84%B1-%EC%8B%A0%EB%B0%9C-qdjlTENZ/CW2288-111",
 
-            displayValue: true,
+    upc:
+    "194500874909"
+},
 
-            fontSize: 11,
 
-            textMargin: 4,
+{
+    rank: "02",
 
-            margin: 3,
+    name:
+    "AIR FORCE 1 '07 WB",
 
-            background: "#ffffff",
+    styleCode:
+    "CJ9179-200",
 
-            lineColor: "#000000"
+    price:
+    "₩169,000",
 
-        }
+    image:
+    "./images/CJ9179-200.png",
 
-    );
+    link:
+    "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%97%90%EC%96%B4-%ED%8F%AC%EC%8A%A4-1-07-wb-%EB%82%A8%EC%84%B1-%EC%8B%A0%EB%B0%9C-8GsD4QyI/CJ9179-200",
 
+    upc:
+    "193152246874"
+},
 
 
-    /* =================================
-       빈 카드 생성
-    ================================== */
+{
+    rank: "03",
 
-    function createEmptyCards(
-        containerId
-    ) {
+    name:
+    "AIR FORCE 1 '07",
 
+    styleCode:
+    "FQ8901-259",
 
-        const container =
-            document.getElementById(
-                containerId
-            );
+    price:
+    "₩169,000",
 
+    image:
+    "./images/FQ8901-259.png",
 
-        for (
-            let i = 1;
-            i <= 5;
-            i++
-        ) {
+    link:
+    "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EC%97%90%EC%96%B4-%ED%8F%AC%EC%8A%A4-1-07-%EC%97%AC%EC%84%B1-%EC%8B%A0%EB%B0%9C-oC22E7Fz/FQ8901-259",
 
+    upc:
+    "196969790400"
+},
 
-            const rank =
-                String(i)
-                .padStart(
-                    2,
-                    "0"
-                );
 
+{
+    rank: "04",
 
-            container.innerHTML += `
+    name:
+    "NIKE BURROW SE",
 
-                <article class="card">
+    styleCode:
+    "HV8561-002",
 
+    price:
+    "₩79,000",
 
-                    <div class="rank">
+    image:
+    "./images/HV8561-002.png",
 
-                        ${rank}
+    link:
+    "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EB%B2%84%EB%A1%9C%EC%9A%B0-se-%EB%82%A8%EC%84%B1-%EC%8A%AC%EB%A6%AC%ED%8D%BC-YVctXDOl/HV8561-002",
 
-                    </div>
+    upc:
+    "198486699280"
+},
 
 
-                    <div class="image-area">
+{
+    rank: "05",
 
-                        <div class="placeholder-image">
+    name:
+    "W NIKE BURROW SE",
 
-                            PRODUCT IMAGE
+    styleCode:
+    "DR8882-100",
 
-                        </div>
+    price:
+    "₩79,000",
 
-                    </div>
+    image:
+    "./images/DR8882-100.png",
 
+    link:
+    "https://www.nike.com/kr/t/%EB%82%98%EC%9D%B4%ED%82%A4-%EB%B2%84%EB%A1%9C%EC%9A%B0-se-%EC%97%AC%EC%84%B1-%EC%8A%AC%EB%A6%AC%ED%8D%BC-H9vZoFik/DR8882-100",
 
-                    <div class="info">
+    upc:
+    "196151990410"
+}
 
 
-                        <div class="product-name">
+];
 
-                            PRODUCT NAME
 
-                        </div>
 
+/* ======================================
+   FOOTWEAR CARD 생성
+====================================== */
 
-                        <div class="style-code">
+function createFootwearCards() {
 
-                            STYLE CODE
 
-                        </div>
+const container =
 
+document.getElementById(
+"footwearProducts"
+);
 
-                        <div class="price">
 
-                            ₩0
+footwearProducts.forEach(
+(product, index) => {
 
-                        </div>
 
+const barcodeId =
 
-                        <div class="empty-info">
+`barcode${index + 1}`;
 
-                            제품 정보 입력 예정
 
-                        </div>
+const card =
 
+document.createElement(
+"article"
+);
 
-                    </div>
 
+card.className =
+"card";
 
-                </article>
 
-            `;
+card.innerHTML = `
 
-        }
 
-    }
+<div class="rank">
 
+${product.rank}
 
+</div>
 
-    createEmptyCards(
-        "apparelProducts"
-    );
 
+<div class="image-area">
 
-    createEmptyCards(
-        "equipmentProducts"
-    );
+
+<a
+
+class="image-link"
+
+href="${product.link}"
+
+target="_blank"
+
+rel="noopener noreferrer"
+
+aria-label="${product.name} 제품 페이지 열기"
+
+>
+
+
+<img
+
+src="${product.image}"
+
+class="product-image"
+
+alt="${product.name}"
+
+>
+
+
+</a>
+
+
+</div>
+
+
+
+<div class="info">
+
+
+<div class="product-name">
+
+${product.name}
+
+</div>
+
+
+<div class="style-code">
+
+${product.styleCode}
+
+</div>
+
+
+<div class="price">
+
+${product.price}
+
+</div>
+
+
+
+<div class="barcode-area">
+
+
+<div class="barcode-title">
+
+SCAN TO ORDER
+
+</div>
+
+
+<div class="barcode-box">
+
+<svg id="${barcodeId}"></svg>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+container.appendChild(
+card
+);
+
+
+
+/* UPC 바코드 */
+
+JsBarcode(
+
+`#${barcodeId}`,
+
+product.upc,
+
+{
+
+format: "UPC",
+
+width: 2,
+
+height: 52,
+
+displayValue: true,
+
+fontSize: 10,
+
+textMargin: 3,
+
+margin: 3,
+
+background:
+"#ffffff",
+
+lineColor:
+"#000000"
+
+}
+
+);
+
+
+}
+
+);
+
+
+}
+
+
+
+/* ======================================
+   APPAREL / EQUIPMENT
+   빈카드 생성
+====================================== */
+
+function createEmptyCards(
+containerId
+) {
+
+
+const container =
+
+document.getElementById(
+containerId
+);
+
+
+for (
+let i = 1;
+i <= 5;
+i++
+) {
+
+
+const rank =
+
+String(i)
+.padStart(
+2,
+"0"
+);
+
+
+const card =
+
+document.createElement(
+"article"
+);
+
+
+card.className =
+"card";
+
+
+card.innerHTML = `
+
+
+<div class="rank">
+
+${rank}
+
+</div>
+
+
+<div class="image-area">
+
+
+<div class="image-link">
+
+
+<div class="placeholder-image">
+
+PRODUCT IMAGE
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="info">
+
+
+<div class="product-name">
+
+PRODUCT NAME
+
+</div>
+
+
+<div class="style-code">
+
+STYLE CODE
+
+</div>
+
+
+<div class="price">
+
+₩0
+
+</div>
+
+
+<div class="empty-info">
+
+제품 정보 입력 예정
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+container.appendChild(
+card
+);
+
+
+}
+
+
+}
+
+
+
+/* 페이지 생성 */
+
+createFootwearCards();
+
+
+createEmptyCards(
+"apparelProducts"
+);
+
+
+createEmptyCards(
+"equipmentProducts"
+);
 
 
 </script>
-
 
 
 </body>
